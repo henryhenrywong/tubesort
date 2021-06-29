@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<head>
+    <title>Ball Sort Puzzle</title>
+</head>
+<body>
+<div id="main">
+<div class="topnav">
+  <a onclick="openNav()" >Edit</a>
+  <button type="button" onclick="solveGrid(true)">Solvable?</button>
+  <button type="button" onclick="addFlask()">Add Flask!</button>
+</div>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <button id = "delButton" type="button" onclick="deleteMode()">Delete Mode: Off</button>
+  <button type="button" onclick="reduceFlask()">Remove Flask</button>
+  <button type="button" onclick="gridCheck()">Check if grid is valid</button>
+  <div style="color:white;">Click on tube you want to remove ball while delete mode is on</div>
+  <div style="color:white;">Select colour and click on tube to add</div>
+  <div style="color:white;">Close menu to keep on playing</div>
+  <div id="sideNavContainer"></div>
+
+</div>
+<h1>Ball Sort Puzzle</h1>
+<p>1. Click on tube to select ball</p>
+<p>2. Only SAME COLOR Ball can be place on top of each other</p>
+<p>3. Sort all balls of same color into one tube</p>
+<div class='container'></div>
+<h3>Solution:</h3>
+<button type="button" onclick="playSolution()">Play Solution</button>
+<div id='solution'></div>
+</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.4.3/math.js"></script>
+<script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+<script src="{{url_for('static', filename='js/color.js')}}"></script>
+<script src="{{url_for('static', filename='js/interactive.js')}}"></script>
+<script src="{{url_for('static', filename='js/script.js')}}"></script>
+<script src="{{url_for('static', filename='js/sidebar.js')}}"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename= 'css/nav.css') }}">
+</html>
