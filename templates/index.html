@@ -8,14 +8,14 @@
 <div id="main">
 <div class="topnav">
   <a onclick="openNav()" >Edit</a>
-  <button type="button" onclick="solveGrid(true)">Solvable?</button>
+  <button type="button" onclick="solveGrid()">Solvable?</button>
   <button type="button" onclick="addFlask()">Add Flask!</button>
 </div>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <button id = "delButton" type="button" onclick="deleteMode()">Delete Mode: Off</button>
   <button type="button" onclick="reduceFlask()">Remove Flask</button>
-  <button type="button" onclick="gridCheck()">Check if grid is valid</button>
+  <button type="button" onclick="gridCheck(true)">Check if grid is valid</button>
   <div style="color:white;">Click on tube you want to remove ball while delete mode is on</div>
   <div style="color:white;">Select colour and click on tube to add</div>
   <div style="color:white;">Close menu to keep on playing</div>
@@ -32,7 +32,6 @@
 <div id='solution'></div>
 </div>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.4.3/math.js"></script>
 <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
 <script src="{{url_for('static', filename='js/color.js')}}"></script>
