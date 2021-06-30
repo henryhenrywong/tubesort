@@ -37,7 +37,6 @@ function verifyMove(activeBall,targetTube){
 //to see if puzzle is completed when ball is manually moved
 function verifyCompletion(){
     ballTube = document.getElementsByClassName("ballContainer")
-    //console.log(ballTube)
     for (const elem of ballTube){
         if(elem.childElementCount == 0){continue}
         else if(elem.childElementCount < 4){return false}
@@ -239,4 +238,95 @@ function closeNav() {
   document.getElementById("mySidenav").style.paddingLeft = "0px";
   document.getElementById("main").style.marginLeft = "0";
   addEvent()
+}
+function newLevel(){
+    let l = []
+    let container = document.getElementsByClassName("container")[0]
+    while(container.firstChild){container.removeChild(container.firstChild)}
+    let numColor = Math.random() * (12 - 2) + 2;
+    for (let step = 0; step < numColor; step++){
+        color = CSS_COLOR_NAMES[step+25]
+        l.push(color,color,color,color)
+        addFlask()
+    }
+    l = shuffle(l)
+    let a=JSON.parse(JSON.stringify(l))
+    let tubes = document.getElementsByClassName('ballContainer')
+    for (const tube of tubes){
+        for (let step = 0; step < 4; step++){
+            var ball = document.createElement("span")
+            ball.className = "dot dotInTube"
+            ball.style.backgroundColor = l.shift()
+            tube.prepend(ball)
+        }
+
+    }
+    addFlask()
+    addFlask()
+    localStorage.setItem("shuffledballs",a)
+
+}
+//fisher yates shuffle, randomises array
+function shuffle(array) {
+  var currentIndex = array.length,  randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
+}
+function retryLevel(){
+    let container = document.getElementsByClassName("container")[0]
+    while(container.firstChild){container.removeChild(container.firstChild)}
+    let shuffledballs = localStorage.getItem("shuffledballs").split(',')
+    let numTubes = shuffledballs.length/4
+    let tubes = document.getElementsByClassName('ballContainer')
+    for (let step = 0; step < numTubes; step++){addFlask()}
+    for (const tube of tubes){
+        for (let step = 0; step < 4; step++){
+            var ball = document.createElement("span")
+            ball.className = "dot dotInTube"
+            ball.style.backgroundColor = shuffledballs.shift()
+            tube.prepend(ball)
+        }
+
+    }
+    addFlask()
+    addFlask()
+}
+function saveState(){
+    let currArray = currentTubeToArray()
+    var flattendata = [].concat.apply([], currArray)
+    let currArrayNum = currArray.map(function(array){return array.length})
+    localStorage.setItem("saveBalls",flattendata)
+    localStorage.setItem("saveTubeDistribution",currArrayNum)
+}
+function loadState(){
+    let container = document.getElementsByClassName("container")[0]
+    while(container.firstChild){container.removeChild(container.firstChild)}
+    ballsColor = localStorage.getItem("saveBalls").split(',')
+    tubeDist = localStorage.getItem("saveTubeDistribution").split(',')
+    for (let step = 0; step < tubeDist.length; step++){addFlask()}
+    let tubes = document.getElementsByClassName('ballContainer')
+    i=0
+    for (const tubeNum of tubeDist){
+        for (let step = 0; step < tubeNum; step++){
+            var ball = document.createElement("span")
+            ball.className = "dot dotInTube"
+            ball.style.backgroundColor = ballsColor.shift()
+            tubes[i].append(ball)
+        }
+        i++
+    }
+
+
 }

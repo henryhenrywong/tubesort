@@ -28,6 +28,7 @@ fetch('example.json')
 
     }
     addEvent()
+    localStorage.setItem("shuffledballs",flattendata.map(x=>colorDict[x]))
   }
   );
 function countUnique(iterable){
