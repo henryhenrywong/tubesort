@@ -21,6 +21,7 @@ fetch('example.json')
             var ball = document.createElement("span")
             ball.className = "dot dotInTube"
             ball.style.backgroundColor = ballColor
+            ball.title = ball.style.backgroundColor
             ballContainer.prepend(ball)
 
         }

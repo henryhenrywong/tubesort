@@ -257,6 +257,7 @@ function newLevel(){
             var ball = document.createElement("span")
             ball.className = "dot dotInTube"
             ball.style.backgroundColor = l.shift()
+            ball.title = ball.style.backgroundColor
             tube.prepend(ball)
         }
 
@@ -296,6 +297,7 @@ function retryLevel(){
             var ball = document.createElement("span")
             ball.className = "dot dotInTube"
             ball.style.backgroundColor = shuffledballs.shift()
+            ball.title = ball.style.backgroundColor
             tube.prepend(ball)
         }
 
@@ -323,6 +325,7 @@ function loadState(){
             var ball = document.createElement("span")
             ball.className = "dot dotInTube"
             ball.style.backgroundColor = ballsColor.shift()
+            ball.title = ball.style.backgroundColor
             tubes[i].append(ball)
         }
         i++
