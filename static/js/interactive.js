@@ -239,6 +239,7 @@ function closeNav() {
   document.getElementById("main").style.marginLeft = "0";
   addEvent()
 }
+//creates a new level
 function newLevel(){
     let l = []
     let container = document.getElementsByClassName("container")[0]
@@ -285,6 +286,7 @@ function shuffle(array) {
 
   return array;
 }
+//reset state to previous new level
 function retryLevel(){
     let container = document.getElementsByClassName("container")[0]
     while(container.firstChild){container.removeChild(container.firstChild)}
@@ -305,6 +307,7 @@ function retryLevel(){
     addFlask()
     addFlask()
 }
+//save button
 function saveState(){
     let currArray = currentTubeToArray()
     var flattendata = [].concat.apply([], currArray)
@@ -312,6 +315,7 @@ function saveState(){
     localStorage.setItem("saveBalls",flattendata)
     localStorage.setItem("saveTubeDistribution",currArrayNum)
 }
+//load button
 function loadState(){
     let container = document.getElementsByClassName("container")[0]
     while(container.firstChild){container.removeChild(container.firstChild)}
