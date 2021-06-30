@@ -3,10 +3,11 @@ circleSidebar(sideNav)
 //creates balls in the side bar
 function circleSidebar(sideNav){
 //j determines number of colors in the sidebar
-    for( let j=0; j<100;j++){
+    for( let j=0; j<148;j++){
         node = document.createElement("span")
         node.className = "dot sideDot"
         node.style.backgroundColor = CSS_COLOR_NAMES[j]
+        node.title = CSS_COLOR_NAMES[j]
         node.onclick=function(){
             var current = document.getElementById("highlighted");
             if(current != null ){
@@ -83,4 +84,19 @@ function gridCheck(alertState){
     }
     if(alertState){alert("Grid is valid")}
     return true
+}
+function filterColor(){
+     let searchbar = document.getElementById("refdocs")
+     let list = document.getElementsByClassName('sideDot')
+     string = searchbar.value
+     for (balls of list){
+        otherString = balls.style.backgroundColor
+        if(otherString.match(new RegExp(string,'i'))){
+            balls.style.display = "block"
+        }else{
+            balls.style.display = "none"
+        }
+     }
+
+
 }
