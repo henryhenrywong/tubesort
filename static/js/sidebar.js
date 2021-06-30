@@ -24,11 +24,11 @@ function circleSidebar(sideNav){
 function deleteMode(){
     button = document.getElementById("delButton")
     if(button.textContent == "Delete Mode: Off"){
-        clickTube = document.getElementsByClassName("tubepic")
+        clickTube = document.getElementsByClassName("tube")
         for (const elem of clickTube){
             elem.onclick = function(){
-               if(this.nextSibling.childElementCount == 0) return
-               this.nextSibling.removeChild(this.nextSibling.firstChild)
+               if(this.children[1].childElementCount == 0) return
+               this.children[1].removeChild(this.children[1].firstChild)
             }
         }
         button.textContent = "Delete Mode: On"
@@ -47,14 +47,14 @@ function reduceFlask(){
 }
 //add enlarged ball to tube when tube is clicked on
 function EditMode(){
-    clickTube = document.getElementsByClassName("tubepic")
+    clickTube = document.getElementsByClassName("tube")
     for (const elem of clickTube){
             elem.onclick = function(){
-                if(this.nextSibling.childElementCount == 4) return
+                if(this.children[1].childElementCount == 4) return
                 var ball = document.createElement("span")
                 ball.className = "dot dotInTube"
                 ball.style.backgroundColor = document.getElementById("highlighted").style.backgroundColor
-                this.nextSibling.prepend(ball)
+                this.children[1].prepend(ball)
             }
         }
 }
