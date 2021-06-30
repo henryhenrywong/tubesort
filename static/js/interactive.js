@@ -1,6 +1,6 @@
 //balls can be moved around when tubes are clicked on
 function addEvent(){
-    clickTube = document.getElementsByClassName("tubepic")
+    clickTube = document.getElementsByClassName("tube")
     for (const elem of clickTube){
         elem.onclick = function(){
             var current = document.getElementsByClassName("selected");
@@ -8,9 +8,9 @@ function addEvent(){
             if (current.length != 0){
             //if same ball is selected then unselect ( so do nothing)
             //if different tube is selected then move active ball to tube
-                if(verifyMove(current[0],this.nextSibling)){
-                    if(this.nextSibling.firstChild != current[0]){
-                        this.nextSibling.prepend(current[0])
+                if(verifyMove(current[0],this.children[1])){
+                    if(this.children[1].firstChild != current[0]){
+                        this.children[1].prepend(current[0])
                          if(verifyCompletion()){
                           alert("Nice!")
                          }
@@ -20,8 +20,8 @@ function addEvent(){
                 current[0].className = current[0].className.replace(" selected", "");
             }else{
             //if there is no current active ball
-                if (this.nextSibling.firstChild != null){
-                    this.nextSibling.firstChild.className += " selected"
+                if (this.children[1].firstChild != null){
+                    this.children[1].firstChild.className += " selected"
                 }
             }
         }
