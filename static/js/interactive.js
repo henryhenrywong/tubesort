@@ -240,11 +240,14 @@ function closeNav() {
   addEvent()
 }
 //creates a new level
-function newLevel(){
+function newLevel(userNum=null){
     let l = []
     let container = document.getElementsByClassName("container")[0]
     while(container.firstChild){container.removeChild(container.firstChild)}
+
     let numColor = Math.random() * (12 - 2) + 2;
+
+    if(userNum != null){numColor = userNum}
     for (let step = 0; step < numColor; step++){
         color = CSS_COLOR_NAMES[step+25]
         l.push(color,color,color,color)
@@ -336,4 +339,11 @@ function loadState(){
     }
 
 
+}
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
 }

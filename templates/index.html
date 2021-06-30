@@ -10,7 +10,7 @@
   <a onclick="openNav()" >Edit</a>
   <button type="button" onclick="solveGrid()">Solvable?</button>
   <button type="button" onclick="addFlask()">Add Flask!</button>
-  <button type="button" onclick="newLevel()">New Level</button>
+  <button type="button" onclick="openForm()">New Level</button>
   <button type="button" onclick="retryLevel()">Retry Level</button>
   <button type="button" onclick="saveState()">Save Progress</button>
   <button type="button" onclick="loadState()">Load last save</button>
@@ -27,6 +27,15 @@
   <div style="color:white;">Hover over ball to check what color they are</div><br>
   <div id="sideNavContainer"></div>
 
+</div>
+<div class="form-popup" id="myForm">
+  <form class="form-container">
+    <div>Enter number of color...</div>
+    <input type="text" placeholder="Number" name="colorNum">
+    <button type="button" class="btn" onclick="newLevel(colorNum.value)">New Level</button>
+    <button type="button" class="btn" onclick="newLevel()">Random number</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
 </div>
 <h1>Ball Sort Puzzle</h1>
 <p>1. Click on tube to select ball</p>
